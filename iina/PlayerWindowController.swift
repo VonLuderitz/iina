@@ -529,9 +529,7 @@ class PlayerWindowController: NSWindowController, NSWindowDelegate {
 
   func windowDidBecomeMain(_ notification: Notification) {
     PlayerCore.lastActive = player
-    if RemoteCommandController.useSystemMediaControl {
-      NowPlayingInfoManager.updateInfo(withTitle: true)
-    }
+    NowPlayingInfoManager.shared.updateInfo(withTitle: true)
     AppDelegate.shared.menuController?.updatePluginMenu()
 
     NotificationCenter.default.post(name: .iinaMainWindowChanged, object: true)
